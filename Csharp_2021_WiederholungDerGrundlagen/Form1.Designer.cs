@@ -39,6 +39,8 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.btnStringFormattierung = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.txtFehlerbehandung = new System.Windows.Forms.TextBox();
+			this.btnObjektorientierung = new System.Windows.Forms.Button();
+			this.btnNeuesMöbelstück = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -141,11 +143,33 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.txtFehlerbehandung.TabIndex = 0;
 			this.txtFehlerbehandung.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFehlerbehandung_KeyDown);
 			// 
+			// btnObjektorientierung
+			// 
+			this.btnObjektorientierung.Location = new System.Drawing.Point(313, 162);
+			this.btnObjektorientierung.Name = "btnObjektorientierung";
+			this.btnObjektorientierung.Size = new System.Drawing.Size(109, 23);
+			this.btnObjektorientierung.TabIndex = 6;
+			this.btnObjektorientierung.Text = "Objektorientierung";
+			this.btnObjektorientierung.UseVisualStyleBackColor = true;
+			this.btnObjektorientierung.Click += new System.EventHandler(this.btnObjektorientierung_Click);
+			// 
+			// btnNeuesMöbelstück
+			// 
+			this.btnNeuesMöbelstück.Location = new System.Drawing.Point(313, 191);
+			this.btnNeuesMöbelstück.Name = "btnNeuesMöbelstück";
+			this.btnNeuesMöbelstück.Size = new System.Drawing.Size(109, 61);
+			this.btnNeuesMöbelstück.TabIndex = 7;
+			this.btnNeuesMöbelstück.Text = "Objektorientierung - Neues Möbelstück hinzufügen";
+			this.btnNeuesMöbelstück.UseVisualStyleBackColor = true;
+			this.btnNeuesMöbelstück.Click += new System.EventHandler(this.btnNeuesMöbelstück_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(484, 278);
+			this.Controls.Add(this.btnNeuesMöbelstück);
+			this.Controls.Add(this.btnObjektorientierung);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnStringFormattierung);
 			this.Controls.Add(this.btnDatumUndUhrzeit);
@@ -173,6 +197,8 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 		private System.Windows.Forms.Button btnStringFormattierung;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.TextBox txtFehlerbehandung;
+		private System.Windows.Forms.Button btnObjektorientierung;
+		private System.Windows.Forms.Button btnNeuesMöbelstück;
 	}
 }
 

@@ -16,6 +16,10 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 		// Dateizugriff, Aufgabe 4: Globale Variable, 
 		// um die Anzahl der Speichervorgänge zu speichern
 		int ZählerDateiSpeichern;
+
+		// Objektorientierung, Aufgabe 13: Globale Variable
+		// um Möbel in einer Liste zu speichern
+		List<Möbel> Möbelliste = new List<Möbel>();
 		public Form1()
 		{
 			InitializeComponent();
@@ -302,6 +306,144 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 					// e. (Fehlerfall)
 					MessageBox.Show(ex.Message);
 				}
+			}
+		}
+
+		/* ---------------------------------------------------------------
+		 * 
+		 *							O B J E K T O R I E N T I E R U N G
+		 *
+		 * ---------------------------------------------------------------
+		 */
+		//  1. => Siehe neue Klasse im Projektmappen-Explorer
+		//  2. => Siehe Klasse "Möbel"
+		//  3. => Siehe Klasse "Möbel"
+		//  4. => Siehe Klasse "Möbel"
+		//  5. => Siehe Klasse "Möbel"
+		//  8. => Siehe Klasse "Möbel"
+		//  9. => Siehe Klasse "Möbel"
+		// 10. => Siehe Klasse "Möbel"
+		// 18. => Siehe neues Formular im Projektmappen-Explorer
+		// 20. => Siehe Klasse "Möbel"
+		private void btnObjektorientierung_Click(object sender, EventArgs e)
+		{
+			// 6. 
+			// Zwei Objekte der Klasse "Möbel" erstellen und ausgeben
+			var erstesMöbelstück = new Möbel("Stuhl", 50);
+			var zweitesMöbelstück = new Möbel("Tisch", 150);
+
+			Console.WriteLine(erstesMöbelstück);
+			Console.WriteLine(zweitesMöbelstück);
+
+			// 7.
+			// Teil 1 siehe Klasse "Möbel"
+
+			// Test Fehlerfall
+			try
+			{
+				erstesMöbelstück.PreisReduzieren(60);		
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			Console.WriteLine(erstesMöbelstück);
+
+			// Test Erfolgsfall
+			try
+			{
+				zweitesMöbelstück.PreisReduzieren(60);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			Console.WriteLine(zweitesMöbelstück);
+
+			// 11.
+			erstesMöbelstück.Farbe = "Gelb";
+			zweitesMöbelstück.Farbe = "Braun";
+
+			Console.WriteLine(erstesMöbelstück);
+			Console.WriteLine(zweitesMöbelstück);
+
+			// 12. 
+			var drittesMöbelstück = new Möbel("Schrank", 400, "Schwarz");
+			var vierteMöbelstück = new Möbel("Regal", 200, "Weiß");
+			var fünftesMöbelstück = new Möbel("Bank", 220, "Rot");
+
+			// 13.
+			// Die Liste wird als globale Variable erstellt, damit
+			// sie auch in der Ereignismethode "Möbelstück hinzufügen" 
+			// verwendet werden kann.
+
+			Möbelliste.Add(erstesMöbelstück);
+			Möbelliste.Add(zweitesMöbelstück);
+			Möbelliste.Add(drittesMöbelstück);
+			Möbelliste.Add(vierteMöbelstück);
+			Möbelliste.Add(fünftesMöbelstück);
+
+			// 14.
+			Console.WriteLine("(14) Alle Möbel in der Liste:");
+			foreach (var möbel in Möbelliste)
+				Console.WriteLine(möbel);
+
+			// 15.
+			erstesMöbelstück.Farbe = "Gelb";
+			zweitesMöbelstück.Farbe = "Gelb";
+
+			// 16.
+			var listeMitGelbenMöbeln = Möbelliste
+				.Where(m => m.Farbe == "Gelb")
+				.ToList();
+
+			// 17.
+			Console.WriteLine("(17) Alle Möbel mit der Farbe gelb:");
+			foreach (var möbel in listeMitGelbenMöbeln)
+				Console.WriteLine(möbel);
+
+			// 22. 
+			// Möglichkeit 1: Dazu muss IComparable<Möbel> in der Klasse "Möbel" imlementiert sein
+			Möbelliste.Sort();
+
+			Console.WriteLine("(22) Sortierte Möbelliste (Möglichkeit 1):");
+			foreach (var möbel in Möbelliste)
+				Console.WriteLine(möbel);
+
+			// Möglichkeit 2: Sortierung über LINQ
+			// Hierfür muss IComparable<Möbel> nicht in der Klasse implementiert sein
+			var sortierteMöbelliste = Möbelliste
+				.OrderBy(m => m.Bezeichnung)
+				.ToList();
+
+			Console.WriteLine("(22) Sortierte Möbelliste (Möglichkeit 2):");
+			foreach (var möbel in sortierteMöbelliste)
+				Console.WriteLine(möbel);
+		}
+
+		private void btnNeuesMöbelstück_Click(object sender, EventArgs e)
+		{
+			// 19.
+			// Ein neues Objekt der Klasse "FormMöbelstückHinzufügen" erstellen
+			var formNeuesMöbelstück = new FormMöbelstückHinzufügen();
+
+			// Formular anzeigen
+			formNeuesMöbelstück.ShowDialog();
+
+			// Rückgabe auswerten & verarbeiten
+			if (formNeuesMöbelstück.DialogResult == DialogResult.OK)
+			{
+				// Neues Möbelstück der Liste hinzufügen
+				Möbelliste.Add(formNeuesMöbelstück.NeuesMöbelstück);
+
+				// a.
+				Console.WriteLine("(19.a) Es wurde ein Objekt hinzugefügt: " +
+					formNeuesMöbelstück.NeuesMöbelstück);
+
+				// b.
+				Console.WriteLine("(19.b) Objekte in der Liste:");
+				foreach (var möbel in Möbelliste)
+					Console.WriteLine(möbel);
 			}
 		}
 	}
