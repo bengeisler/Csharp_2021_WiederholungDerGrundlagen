@@ -56,6 +56,10 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			int rest = i % 4;				// Mit dem Modulo-Operator den Rest der Division berechnen
 			Console.WriteLine($"Ergebnis: {ergebnis}, Rest: {rest}");
 
+			// Alternative Schreibweisen der Ausgabeformatierung:
+			Console.WriteLine("Ergebnis: {0}, Rest: {1}", ergebnis, rest);
+			Console.WriteLine("Ergebis: " + ergebnis + ", Rest: " + rest);
+
 			// 6.
 			Console.WriteLine("Der aktuelle Wert der Zahl beträgt: " + ergebnis);
 
