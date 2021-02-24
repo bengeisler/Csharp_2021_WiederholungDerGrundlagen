@@ -214,5 +214,23 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			// Für jeden Speichervorgang den Zähler um 1 erhöhen
 			ZählerDateiSpeichern++;
 		}
+
+		/* ---------------------------------------------------------------
+		 * 
+		 *								D A T U M   &   U H R Z E I T
+		 *
+		 * ---------------------------------------------------------------
+		 */
+		private void btnDatumUndUhrzeit_Click(object sender, EventArgs e)
+		{
+			// 1. 
+			Console.WriteLine(DateTime.Now);
+
+			// 2.
+			Console.WriteLine(DateTime.Now.ToShortDateString());
+
+			// 3.
+			Console.WriteLine(DateTime.Now.ToShortTimeString());
+		}
 	}
 }
