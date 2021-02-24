@@ -41,6 +41,7 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.txtFehlerbehandung = new System.Windows.Forms.TextBox();
 			this.btnObjektorientierung = new System.Windows.Forms.Button();
 			this.btnNeuesMöbelstück = new System.Windows.Forms.Button();
+			this.btnMethoden = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -163,11 +164,22 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.btnNeuesMöbelstück.UseVisualStyleBackColor = true;
 			this.btnNeuesMöbelstück.Click += new System.EventHandler(this.btnNeuesMöbelstück_Click);
 			// 
+			// btnMethoden
+			// 
+			this.btnMethoden.Location = new System.Drawing.Point(419, 11);
+			this.btnMethoden.Name = "btnMethoden";
+			this.btnMethoden.Size = new System.Drawing.Size(69, 23);
+			this.btnMethoden.TabIndex = 8;
+			this.btnMethoden.Text = "Methoden";
+			this.btnMethoden.UseVisualStyleBackColor = true;
+			this.btnMethoden.Click += new System.EventHandler(this.btnMethoden_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(484, 278);
+			this.ClientSize = new System.Drawing.Size(500, 278);
+			this.Controls.Add(this.btnMethoden);
 			this.Controls.Add(this.btnNeuesMöbelstück);
 			this.Controls.Add(this.btnObjektorientierung);
 			this.Controls.Add(this.groupBox2);
@@ -199,6 +211,7 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 		private System.Windows.Forms.TextBox txtFehlerbehandung;
 		private System.Windows.Forms.Button btnObjektorientierung;
 		private System.Windows.Forms.Button btnNeuesMöbelstück;
+		private System.Windows.Forms.Button btnMethoden;
 	}
 }
 

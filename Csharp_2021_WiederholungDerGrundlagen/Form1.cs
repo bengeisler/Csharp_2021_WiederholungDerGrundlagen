@@ -315,6 +315,41 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 
 		/* ---------------------------------------------------------------
 		 * 
+		 *										M E T H O D E N
+		 *
+		 * ---------------------------------------------------------------
+		 */
+
+		// 1.
+
+		// Methoden Addition & Subtraktion
+		// - private:					Sichtbarkeit 
+		// - int:							Rückgabetyp
+		// - Addition:				Name der Methode
+		// - (int a, int b):	Parameter der Methode
+		private int Addition(int a, int b)
+		{
+			return a + b;
+		}
+		private int Subtraktion(int a, int b)
+		{
+			return a - b;
+		}
+
+		// 2.
+		private void btnMethoden_Click(object sender, EventArgs e)
+		{
+			// Addition
+			int ergebnis = Addition(2, 3);
+			Console.WriteLine("Ergebnis der Addition: 2 + 3 = " + ergebnis);
+
+			// Subtraktion
+			ergebnis = Subtraktion(2, 3);
+			Console.WriteLine("Ergebnis der Subtraktion: 2 - 3 = " + ergebnis);
+		}
+
+		/* ---------------------------------------------------------------
+		 * 
 		 *							O B J E K T O R I E N T I E R U N G
 		 *
 		 * ---------------------------------------------------------------
