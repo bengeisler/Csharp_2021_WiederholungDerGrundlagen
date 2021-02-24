@@ -263,5 +263,46 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			// 7.
 			Console.WriteLine($"Ausgabe rechtsbündig mit Breite von 20: ->{zahl,20}<-");
 		}
+
+		/* ---------------------------------------------------------------
+		 * 
+		 *							F E H L E R B E H A N D L U N G
+		 *
+		 * ---------------------------------------------------------------
+		 */
+		// 1. => Siehe Form
+		private void txtFehlerbehandung_KeyDown(object sender, KeyEventArgs e)
+		{
+			// 2.
+			if (e.KeyCode == Keys.Enter)		// Abfragen, ob Enter-Taste gedrückt wurde
+			{
+				try
+				{
+					// a.
+					if (txtFehlerbehandung.Text == "") 
+						throw new ArgumentException("Die Eingabe darf nicht leer sein!");
+
+					// b.
+					if (txtFehlerbehandung.Text.Length < 3) 
+						throw new ArgumentException("Es müssen mindestens drei Zeichen eingegeben werden!");
+
+					// c.
+					if (!int.TryParse(txtFehlerbehandung.Text, out int eingabe)) 
+						throw new ArgumentException("Bitte eine Ganzzahl eingeben!");
+
+					// d.
+					if (eingabe < 0)
+						throw new ArgumentException("Die Eingabe muss > 0 sein!");
+
+					// e. (Erfolgsfall)
+					Console.WriteLine("Folgendes wurde in die Textbox eingegben: " + txtFehlerbehandung.Text);
+				}
+				catch (Exception ex)
+				{
+					// e. (Fehlerfall)
+					MessageBox.Show(ex.Message);
+				}
+			}
+		}
 	}
 }

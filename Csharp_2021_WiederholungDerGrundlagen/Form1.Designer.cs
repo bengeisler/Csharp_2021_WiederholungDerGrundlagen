@@ -37,7 +37,10 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.btnDateiSpeichern = new System.Windows.Forms.Button();
 			this.btnDatumUndUhrzeit = new System.Windows.Forms.Button();
 			this.btnStringFormattierung = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.txtFehlerbehandung = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnOperatoren
@@ -120,11 +123,30 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.btnStringFormattierung.UseVisualStyleBackColor = true;
 			this.btnStringFormattierung.Click += new System.EventHandler(this.btnStringFormattierung_Click);
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.txtFehlerbehandung);
+			this.groupBox2.Location = new System.Drawing.Point(272, 54);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(200, 80);
+			this.groupBox2.TabIndex = 5;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Fehlerbehandlung";
+			// 
+			// txtFehlerbehandung
+			// 
+			this.txtFehlerbehandung.Location = new System.Drawing.Point(22, 37);
+			this.txtFehlerbehandung.Name = "txtFehlerbehandung";
+			this.txtFehlerbehandung.Size = new System.Drawing.Size(159, 20);
+			this.txtFehlerbehandung.TabIndex = 0;
+			this.txtFehlerbehandung.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFehlerbehandung_KeyDown);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnStringFormattierung);
 			this.Controls.Add(this.btnDatumUndUhrzeit);
 			this.Controls.Add(this.groupBox1);
@@ -133,6 +155,8 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.Name = "Form1";
 			this.Text = "Wiederholung der Grundlagen";
 			this.groupBox1.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -147,6 +171,8 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 		private System.Windows.Forms.Button btnDateiEinlesen;
 		private System.Windows.Forms.Button btnDatumUndUhrzeit;
 		private System.Windows.Forms.Button btnStringFormattierung;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.TextBox txtFehlerbehandung;
 	}
 }
 
