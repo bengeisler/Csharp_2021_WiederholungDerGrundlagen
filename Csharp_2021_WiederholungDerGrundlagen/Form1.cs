@@ -232,5 +232,36 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			// 3.
 			Console.WriteLine(DateTime.Now.ToShortTimeString());
 		}
+
+		/* ---------------------------------------------------------------
+		 * 
+		 *				S T R I N G - F O R M A T T I E R U N G
+		 *
+		 * ---------------------------------------------------------------
+		 */
+		private void btnStringFormattierung_Click(object sender, EventArgs e)
+		{
+			// 1.
+			double zahl = 12345.6789;
+
+			// 2.
+			Console.WriteLine($"Ausgabe ohne Nachkommastelle: {zahl:#}");
+
+			// 3.
+			Console.WriteLine($"Ausgabe mit zwei Nachkommastellen: {zahl:#.00}");
+
+			// 4. 
+			Console.WriteLine($"Ausgabe mit Tausender-Trennzeichen: {zahl:#,#} (ohne Nachkommastellen)");				 // ohne Nachkommastellen
+			Console.WriteLine($"Ausgabe mit Tausender-Trennzeichen: {zahl:#,#.####} (mit Nachkommastellen)");    // mit Nachkommastellen
+
+			// 5. 
+			Console.WriteLine($"Ausgabe als Währung: {zahl:C}");
+
+			// 6.
+			Console.WriteLine($"Ausgabe linksbündig mit Breite von 20 : ->{zahl,-20}<-");
+
+			// 7.
+			Console.WriteLine($"Ausgabe rechtsbündig mit Breite von 20: ->{zahl,20}<-");
+		}
 	}
 }

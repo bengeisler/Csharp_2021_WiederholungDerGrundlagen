@@ -36,6 +36,7 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.lstListe = new System.Windows.Forms.ListBox();
 			this.btnDateiSpeichern = new System.Windows.Forms.Button();
 			this.btnDatumUndUhrzeit = new System.Windows.Forms.Button();
+			this.btnStringFormattierung = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -109,11 +110,22 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			this.btnDatumUndUhrzeit.UseVisualStyleBackColor = true;
 			this.btnDatumUndUhrzeit.Click += new System.EventHandler(this.btnDatumUndUhrzeit_Click);
 			// 
+			// btnStringFormattierung
+			// 
+			this.btnStringFormattierung.Location = new System.Drawing.Point(294, 11);
+			this.btnStringFormattierung.Name = "btnStringFormattierung";
+			this.btnStringFormattierung.Size = new System.Drawing.Size(119, 23);
+			this.btnStringFormattierung.TabIndex = 4;
+			this.btnStringFormattierung.Text = "String-Formattierung";
+			this.btnStringFormattierung.UseVisualStyleBackColor = true;
+			this.btnStringFormattierung.Click += new System.EventHandler(this.btnStringFormattierung_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnStringFormattierung);
 			this.Controls.Add(this.btnDatumUndUhrzeit);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnSchleifen);
@@ -134,6 +146,7 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 		private System.Windows.Forms.ListBox lstListe;
 		private System.Windows.Forms.Button btnDateiEinlesen;
 		private System.Windows.Forms.Button btnDatumUndUhrzeit;
+		private System.Windows.Forms.Button btnStringFormattierung;
 	}
 }
 
