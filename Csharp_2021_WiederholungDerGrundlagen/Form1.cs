@@ -7,17 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Csharp_2021_WiederholungDerGrundlagen
 {
 	public partial class Form1 : Form
 	{
+		// Dateizugriff, Aufgabe 4: Globale Variable, 
+		// um die Anzahl der Speichervorgänge zu speichern
+		int ZählerDateiSpeichern;
 		public Form1()
 		{
 			InitializeComponent();
 		}
 
-		// Aufgabe "Operatoren"
+		/* ---------------------------------------------------------------
+		 * 
+		 *							O P E R A T O R E N
+		 *
+		 * ---------------------------------------------------------------
+		 */
 		private void btnOperatoren_Click(object sender, EventArgs e)
 		{
 			// 1.
@@ -55,6 +64,12 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 			Console.WriteLine(k);
 		}
 
+		/* ---------------------------------------------------------------
+		 * 
+		 *							S C H L E I F E N
+		 *
+		 * ---------------------------------------------------------------
+		 */
 		private void btnSchleifen_Click(object sender, EventArgs e)
 		{
 			// 1.a
@@ -82,6 +97,122 @@ namespace Csharp_2021_WiederholungDerGrundlagen
 				durchlaufZähler++;
 			}
 			Console.WriteLine($"Diese Schleife wurde {durchlaufZähler} mal durchlaufen");
+		}
+
+		/* ---------------------------------------------------------------
+		 * 
+		 *							D A T E I Z U G R I F F
+		 *
+		 * ---------------------------------------------------------------
+		 */
+		// Beim Dateizugriff nicht vergessen: using System.IO; 
+		// Generell sollten Dateizugriffe immer innerhalb eines try-catch-Blocks erfolgen.
+		// Das wird der Einfachheit halber hier allerdings weggelassen.
+		private void btnDateiEinlesen_Click(object sender, EventArgs e)
+		{
+			// 1. 
+			var ofd = new OpenFileDialog()
+			{
+				InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+				Filter = "Textdateien (*.txt)|*.txt",
+				Title = "Datei öffnen"
+			};
+
+			// OpenFileDialog anzeigen
+			// Ergebnis auswerten: Falls nicht auf "Öffnen" geklickt wurde, wird 
+			// diese Funktion hier mittels "return" verlassen
+			if (ofd.ShowDialog() != DialogResult.OK) return;
+
+			// 2.
+			// Hier gibt es verschiedene Möglichkeiten
+
+			// Möglichkeit 1
+			Console.WriteLine("Aufgabe 2, Möglichkeit 1:");
+			string[] zeilenInDatei = File.ReadAllLines(ofd.FileName);						// Alle Zeilen der Datei in ein String-Array einlesen
+			Console.WriteLine($"Die Datei hat {zeilenInDatei.Length} Zeilen");  // Größe des Arrays ausgeben => Entspricht Anzahl der Zeilen
+
+			// Möglichkeit 2
+			Console.WriteLine("Aufgabe 2, Möglichkeit 2:");
+			var sr = new StreamReader(ofd.FileName);						// Objekt der Klasse StreamReader erstellen, um Datei einzulesen
+			int zeilenanzahl = 0;																// Variable zum Zählen der Zeilen
+			while (!sr.EndOfStream)															// Alle Zeilen einlesen. Alternative: sr.Peek() != -1
+			{
+				sr.ReadLine();			// Zeile einlesen
+				zeilenanzahl++;			// Zeilenzähler erhöhen
+			}
+			Console.WriteLine($"Die Datei hat {zeilenanzahl} Zeilen");
+
+			// 3.
+			// Auch hier gibt es wieder verschiedene Möglichkeiten
+
+			// Möglichkeit 1:
+			lstListe.Items.Clear();																			// ListBox leeren
+			string[] zeilenDerDatei = File.ReadAllLines(ofd.FileName);	// Alle Zeilen der Datei in ein String-Array einlesen
+			foreach (var zeile in zeilenDerDatei)												// Alle Einträge dieses Arrays der Listbox hinzufügen
+				lstListe.Items.Add(zeile);
+
+			MessageBox.Show("Das war Aufgabe 3, Möglichkeit 1");
+
+			// Möglichkeit 2:
+			lstListe.Items.Clear();                               // ListBox leeren
+			var sr2 = new StreamReader(ofd.FileName);							// Objekt der Klasse StreamReader erstellen, um Datei einzulesen
+			while (!sr2.EndOfStream)															// Alle Zeilen einlesen. Alternative: sr.Peek() != -1
+				lstListe.Items.Add(sr2.ReadLine());                 // Zeile einlesen und der ListBox hinzufügen
+
+			MessageBox.Show("Das war Aufgabe 3, Möglichkeit 2");
+
+			// Möglichkeit 3:
+			lstListe.Items.Clear();                                     // ListBox leeren
+			lstListe.Items.AddRange(File.ReadAllLines(ofd.FileName));   // Alle Zeilen der Datei einlesen und als Range der Listbox hinzufügen
+
+			MessageBox.Show("Das war Aufgabe 3, Möglichkeit 3");
+		}
+
+		private void btnDateiSpeichern_Click(object sender, EventArgs e)
+		{
+			// 4.
+			// => Ganz oben globale Variable anlegen
+			var sfd = new SaveFileDialog()
+			{
+				InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+				Filter = "Textdateien (*.txt)|*.txt",
+				Title = "Datei speichern",
+				FileName = "MeineListe_" + ZählerDateiSpeichern + ".txt"
+			};
+
+			// SaveFileDialog anzeigen
+			// Abbruch, falls nicht "Speichern" ausgewählt wurde
+			if (sfd.ShowDialog() != DialogResult.OK) return;
+
+			// 5.
+			// Hier gibt es mehrere Möglichkeiten 
+			// => Bitte Möglichkeiten selbst einkommentieren und testen
+
+			// 1. Möglichkeit
+
+			//foreach (var item in lstListe.Items)              // Jeder Eintrag der ListBox wird an die Datei angehängt
+			//	File.AppendAllText(sfd.FileName, item + "\n");  // Das bedeutet aber auch: Falls diese Datei schon existiert, bleibt
+			//																									// der bestehende Inhalt erhalten
+
+			// 2. Möglichkeit
+
+			//var sw = new StreamWriter(sfd.FileName, false);   // Pfad aus SaveFileDialog übernehmen
+			//																									// false: Datei überschreiben / true: neuen Inhalt anhängen
+			//foreach (var item in lstListe.Items)							// Alle Einträge der ListBox in die Datei schreiben
+			//{
+			//	sw.WriteLine(item);
+			//}
+			//sw.Close();																				// Am Ende den StreamWriter wieder schließen
+			
+
+			// 3. Möglichkeit
+
+			File.WriteAllLines(sfd.FileName, lstListe.Items.OfType<string>().ToArray());
+
+
+
+			// Für jeden Speichervorgang den Zähler um 1 erhöhen
+			ZählerDateiSpeichern++;
 		}
 	}
 }
